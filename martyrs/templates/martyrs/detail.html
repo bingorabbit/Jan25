@@ -1,0 +1,33 @@
+{% include "martyrs/header.html" %}
+<div class="row">
+    {% if martyr %}
+    <div class="media">
+        <div class="media-left">
+            <img class="media-object" src="http://placehold.it/80x80" alt="TODO: Martyr's Photo">
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{ martyr.name }}</h4>
+            <span class="row">
+                <span class="col-md-6">
+                    <label>Date of Birth:</label> {{ martyr.date_of_birth }}
+                </span>
+                <span class="col-md-6">
+                    <label>Date of Death:</label> {{ martyr.date_of_death }}
+                </span>
+                <span class="col-md-6">
+                    <label>Governorate:</label> {{ martyr.governorate }}
+                </span>
+                <span class="col-md-6">
+                    <label>Officer's Name:</label> {{ martyr.officer_name }}
+                </span>
+                <span class="col-md-12">
+                    <label>Cause of Death:</label> {{ martyr.cause_of_death }}
+                </span>
+            </span>
+        </div>
+    </div>
+    {% else %}
+    <p>No Martyr with this ID was found in our database.</p>
+    {% endif %}
+</div>
+{% include "martyrs/footer.html" %}

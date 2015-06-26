@@ -1,0 +1,28 @@
+{% include "martyrs/header.html" %}
+<div class="row">
+    {% if martyrs %}
+        <ul class="media-list">
+            {% for martyr in martyrs %}
+                <li class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="/martyrs/{{ martyr.id }}/">{{ martyr.name }}</a></h4>
+                            <span class="row">
+                                <span class="col-md-4">
+                                    <label>Governorate:</label> {{ martyr.governorate }}
+                                </span>
+                                <span class="col-md-4">
+                                    <label>Date of Death:</label> {{ martyr.date_of_death }}
+                                </span>
+                                <span class="col-md-4">
+                                    <a href="/martyrs/{{ martyr.id }}/">More about {{ martyr.name }}</a>
+                                </span>
+                            </span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Martyrs found in our database, wouldn't that be just awesome!.</p>
+    {% endif %}
+</div>
+{% include "martyrs/footer.html" %}
