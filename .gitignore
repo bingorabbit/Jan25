@@ -4,7 +4,6 @@ env/
 *.pyc
 *.swp
 .idea*
-static
 *.orig
 *.csv
 *.xlsx
