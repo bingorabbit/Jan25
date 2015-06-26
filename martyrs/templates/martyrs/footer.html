@@ -11,5 +11,14 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="{%  static 'martyrs/js/bootstrap.min.js'  %}"></script>
+    <script src="{%  static 'martyrs/js/jquery.confirm.min.js'  %}"></script>
+    <script src="{%  static 'martyrs/js/moment.min.js'  %}"></script>
+    <script src="{%  static 'martyrs/js/bootstrap-datetimepicker.min.js'  %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#date_of_birth, #date_of_death").datetimepicker();
+            $("#confirm").confirm();
+        });
+    </script>
 </body>
 </html>

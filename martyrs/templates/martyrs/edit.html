@@ -11,7 +11,7 @@
     {% endfor %}
 {% endif %}
 <div class="row">
-    <form id="add-form" class="add-form" action="" method="post">
+    <form class="add-form" action="" method="post">
         {% csrf_token %}
         {{ add_form.non_field_errors }}
 
@@ -35,9 +35,9 @@
 
             <div class="input-icon">
                 <i class="fa fa-calendar"></i>
-                <input id="date_of_birth" class="form-control placeholder-no-fix" type="text"
-                       placeholder="Date of Birth" name="date_of_birth" data-date-format="YYYY-MM-DD"
-                       value="{% if add_form.date_of_birth.value %}{{ add_form.date_of_birth.value }}{% endif %}"/>
+                <input class="form-control placeholder-no-fix" type="text"
+                       placeholder="Date of Birth" name="date_of_birth"
+                       value="{% if add_form.date_of_birth.value %}{{ add_form.date_of_birth.value |date:'Y-m-d' }}{% endif %}"/>
                 {% if add_form.date_of_birth.errors %}
                     <span class="help-block" for="{{ add_form.date_of_birth.id_for_label }}">
                             {{ add_form.date_of_birth.errors.0 }}
@@ -50,9 +50,9 @@
 
             <div class="input-icon">
                 <i class="fa fa-calendar"></i>
-                <input id="date_of_death" class="form-control placeholder-no-fix" type="text"
-                       placeholder="Date of Death" name="date_of_death" data-date-format="YYYY-MM-DD"
-                       value="{% if add_form.date_of_death.value %}{{ add_form.date_of_death.value }}{% endif %}"/>
+                <input class="form-control placeholder-no-fix" type="text"
+                       placeholder="Date of Death" name="date_of_death"
+                       value="{% if add_form.date_of_death.value %}{{ add_form.date_of_death.value |date:'Y-m-d' }}{% endif %}"/>
                 {% if add_form.date_of_death.errors %}
                     <span class="help-block" for="{{ add_form.date_of_death.id_for_label }}">
                             {{ add_form.date_of_death.errors.0 }}
@@ -97,8 +97,7 @@
             <div class="input-icon">
                 <i class="fa fa-calendar"></i>
                             <textarea class="form-control placeholder-no-fix" type="text"
-                                      placeholder="Cause of Death" name="cause_of_death"
-                                      value="{% if add_form.cause_of_death.value %}{{ add_form.cause_of_death.value }}{% endif %}"></textarea>
+                                      placeholder="Cause of Death" name="cause_of_death">{% if add_form.cause_of_death.value %}{{ add_form.cause_of_death.value }}{% endif %}</textarea>
                 {% if add_form.cause_of_death.errors %}
                     <span class="help-block" for="{{ add_form.cause_of_death.id_for_label }}">
                             {{ add_form.cause_of_death.errors.0 }}
@@ -108,39 +107,9 @@
         </div>
         <div class="form-actions">
             <button type="submit" id="register-submit-btn" class="btn blue pull-right">
-                <i class="fa fa-plus-circle"></i> Add Martyr Record
+                <i class="fa fa-plus-circle"></i> Update Martyr Record
             </button>
         </div>
     </form>
-</div>
-<div class="row">
-    {% if martyrs %}
-        <ul class="media-list">
-            {% for martyr in martyrs %}
-                <li class="media">
-                    <div class="media-body">
-                        <h4 class="media-heading"><a href="/martyrs/{{ martyr.id }}/">{{ martyr.name }}</a></h4>
-                            <span class="row">
-                                <span class="col-md-4">
-                                    <label>Governorate:</label> {{ martyr.governorate }}
-                                </span>
-                                <span class="col-md-4">
-                                    <label>Date of Death:</label> {{ martyr.date_of_death }}
-                                </span>
-                                <span class="col-md-4">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <a href="/martyrs/{{ martyr.id }}/" class="btn btn-xs btn-info" alt="More about {{ martyr.name }}"><i class="glyphicon glyphicon-info-sign"></i> More</a>
-                                        <a href="/martyrs/{{ martyr.id }}/edit/" class="btn btn-xs btn-warning" alt="Edit {{ martyr.name }}"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                                        <a href="/martyrs/{{ martyr.id }}/delete/" id="confirm" class="btn btn-xs btn-danger" alt="Delete {{ martyr.name }}"><i class="glyphicon glyphicon-remove"></i> Delete</a>
-                                    </div>
-                                </span>
-                            </span>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No Martyrs found in our database, wouldn't that be just awesome!.</p>
-    {% endif %}
 </div>
 {% include "martyrs/footer.html" %}

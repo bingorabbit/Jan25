@@ -10,7 +10,7 @@
 
     <!-- Bootstrap --><!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'martyrs/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'martyrs/css/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'martyrs/css/bootstrap-datetimepicker.css' %}">
 
     <link rel="stylesheet" href="{% static 'martyrs/style.css' %}">
 
@@ -27,6 +27,7 @@
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"{% if request.path == '/martyrs/' %} class="active"{% endif %}><a href="{% url 'index' %}">Home</a></li>
+                <li role="presentation"{% if request.path == '/martyrs/add/' %} class="active"{% endif %}><a href="#" onClick="$('#add-form').slideToggle()">Add a new record</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">25 Jan Martyrs</h3>
